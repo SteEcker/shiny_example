@@ -1,10 +1,9 @@
 ---
-title: "Old Faithful Eruptions"
+title: "EMBRACE Monitoring Tools"
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
     social: menu
-    source_code: embed
 runtime: shiny
 ---
 
@@ -17,8 +16,7 @@ data(faithful)
 Column {.sidebar}
 -----------------------------------------------------------------------
 
-Waiting time between eruptions and the duration of the eruption for the
-Old Faithful geyser in Yellowstone National Park, Wyoming, USA.
+If you can read this, EMBRACE is online! This is a proof of concept. Play around with your new interactice report.
 
 ```{r}
 selectInput("n_breaks", label = "Number of bins:",
@@ -31,12 +29,12 @@ sliderInput("bw_adjust", label = "Bandwidth adjustment:",
 Column
 -----------------------------------------------------------------------
 
-### Geyser Eruption Duration
+### Some graph
 
 ```{r}
 renderPlot({
   hist(faithful$eruptions, probability = TRUE, breaks = as.numeric(input$n_breaks),
-       xlab = "Duration (minutes)", main = "Geyser Eruption Duration")
+       xlab = "Time", main = "Productivity")
   
   dens <- density(faithful$eruptions, adjust = input$bw_adjust)
   lines(dens, col = "blue")
